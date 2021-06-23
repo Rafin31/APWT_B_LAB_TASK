@@ -18,24 +18,31 @@ class loginController extends Controller
         return view('Registration.registration');
     }
 
-    public function loginVarify(loginRequest $req)
+    public function loginVarify(Request $req)
     {
 
-
+        // echo $req->user_name;
+        // echo $req->password;
         $user = user::where('user_name', $req->user_name)
-            ->where('password', md5($req->password))
+            ->where('password', $req->password)
             ->first();
 
+        //print_r($user);
+        // $users = user::all();
+        //echo $user['user_name'];
 
-
-
-        if (count($user) > 0) {
+        if ($user) {
             $req->session()->put('user_name', $user['user_name']);
             $req->session()->put('type', $user['type']);
-            return redirect('/home');
+
+            if ($user['User_type'] == 'admin') {
+                return redirect()->route('admin');
+            } elseif ($user['User_type'] == 'customer') {
+                return redirect()->route('customer');
+            }
         } else {
             $req->session()->flash('msg', 'invalid username/password');
-            return redirect('/login');
+            return redirect()->route('showLogin');
         }
     }
 }

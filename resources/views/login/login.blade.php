@@ -16,13 +16,14 @@
     <div class="form">
         <form method="post">
             @csrf
-            User Name : <input type="text" name="uname" value="{{old('uname')}}"> <br>
+            User Name : <input type="text" name="user_name" value="{{old('uname')}}"> <br>
             <div style="color: red">{{$errors->first('uname')}}</div>
             Password : <input type="password" name="password"><br>
             <div style="color: red">{{$errors->first('password')}}</div>
             <input type="submit" name="submit" value="Login">
         </form>
         <div>
+            <div class="Massage" style="color: red">{{session('msg')}}</div>
 
         </div>
     </div>

@@ -24,3 +24,8 @@ Route::post('/login', 'loginController@loginVarify');
 
 Route::get('/registration', 'loginController@showRegistrationPage')->name('showReg');
 Route::post('/registration', 'userController@confirmRegistration');
+
+Route::get('/login/dashbord', 'userController@admindashbord')->name('admin');
+Route::get('/login/dashbord/logout', 'logout@logout')->name('logout');
+
+Route::get('/login/dashbord/customerLists', 'userController@customerLists')->name('customerLists');
