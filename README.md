@@ -15,5 +15,6 @@ Admin can mange user information and many more.
 -   Download the zip folder.
 -   insert the sql file from database->sqlfile in phpmyAdmin and name the Database laravel
 -   run php server from xamp
+-   go to terminal and run composer install.
 -   run php artisan serve in the terminal.
 -   go to localhost.
