@@ -19,7 +19,7 @@ class userController extends Controller
         $user->Full_name = $req->Fname;
         $user->user_name = $req->user_name;
         $user->Email = $req->email;
-        $user->password =  md5($req->password);
+        $user->password =  ($req->password);
         $user->Phone_number = $req->number;
         $user->company = $req->company_name;
         $user->city = $req->city;
@@ -27,5 +27,17 @@ class userController extends Controller
         $user->user_type = 'customer';
         $user->save();
         return redirect()->route('showLogin');
+    }
+
+    public function admindashbord()
+    {
+
+        return view('admin.dashbord');
+    }
+
+    public function customerLists()
+    {
+        $lists = user::all();
+        return view('admin.customerLists')->with('users', $lists);
     }
 }
